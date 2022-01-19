@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=7.4",
 	  "ext-ftp": "*",
-	  "ext-json": "*"
+	  "ext-json": "*",
+	  "ext-fileinfo": "*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

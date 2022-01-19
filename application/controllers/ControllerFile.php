@@ -1,50 +1,59 @@
 <?php
 
-class ControllerFile extends CI_Controller{
+require_once "ControllerElement.php";
+
+class ControllerFile extends ControllerElement {
+
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("myClass/FTPConnexion");
 	}
 
 
-	function index(){
-		print "test";
-		$this->load->view("welcome_message");
-	}
-
-	function pwd(){
+	function get(){
 		$ftp = FTPConnexion::getFTP();
-		echo ftp_pwd($ftp);
-		ftp_close($ftp);
-	}
+		$path = $_GET["path"];
+		$splitSlash = explode("/", $path);
+		$splitPoint = explode(".", $path);
+		$filename = end($splitSlash);
+		$extension = end($splitPoint);
+		$file = fopen($_SERVER['DOCUMENT_ROOT']."/".$filename,"wr");
 
-	function ls(){
-		$ftp = FTPConnexion::getFTP();
-		print_r (ftp_nlist($ftp, "./test"));
-		ftp_close($ftp);
-	}
 
-	function get($path){
-		$ftp = FTPConnexion::getFTP();
-		ftp_get($ftp,"/Users/maelc/Documents/test.txt",$path,FTP_BINARY);
-		ftp_close($ftp);
-	}
-
-	function rename(){
-		$ftp = FTPConnexion::getFTP();
-		if(!$ftp){
-			ErrorJSON::toJson("400","Bad Request","Can't able to connect to the FTP server");
-			return false;
+		if(!ftp_fget($ftp,$file,$path,FTP_BINARY)){
+			header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
+			return;
 		}
-		$rename = ftp_rename($ftp,$_POST['pathSrc'],$_POST['newName']);
-		if($rename){
-			ErrorJSON::toJson("400","Bad Request", "Can't rename the file at ".$_POST['pathSrc']);
-			return false;
-		}
+
 		ftp_close($ftp);
-		return json_encode(array("code" =>"200","message"=>"OK","information"=>"The file as been renamed"));
+		$attachment_location = $_SERVER["DOCUMENT_ROOT"] . "/" . $filename;
+		if (file_exists($attachment_location)) {
+			header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+			header("Cache-Control: public"); // needed for internet explorer
+			header("Content-Type: application/".$extension);
+			header("Content-Transfer-Encoding: Binary");
+			header("Content-Length:".filesize($attachment_location));
+			header("Content-Disposition: attachment; filename=".$filename);
+			readfile($attachment_location);
+			die();
+		} else {
+			die("Error: File not found.");
+		}
 	}
+
+	public function put(){
+		$path = $_POST['path'];
+		$file = $_POST['file'];
+		$ftp = FTPConnexion::getFTP();
+
+		if(!ftp_put($ftp,$file,$path.$file)){
+			//error
+			return;
+		}
+
+	}
+
+
 }
 
 
