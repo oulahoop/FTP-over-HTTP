@@ -30,6 +30,21 @@ class ControllerFile extends CI_Controller{
 		ftp_get($ftp,"/Users/maelc/Documents/test.txt",$path,FTP_BINARY);
 		ftp_close($ftp);
 	}
+
+	function rename(){
+		$ftp = FTPConnexion::getFTP();
+		if(!$ftp){
+			ErrorJSON::toJson("400","Bad Request","Can't able to connect to the FTP server");
+			return false;
+		}
+		$rename = ftp_rename($ftp,$_POST['pathSrc'],$_POST['newName']);
+		if($rename){
+			ErrorJSON::toJson("400","Bad Request", "Can't rename the file at ".$_POST['pathSrc']);
+			return false;
+		}
+		ftp_close($ftp);
+		return json_encode(array("code" =>"200","message"=>"OK","information"=>"The file as been renamed"));
+	}
 }
 
 
