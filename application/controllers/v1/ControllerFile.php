@@ -15,23 +15,21 @@ class ControllerFile extends ControllerElement {
 	 */
 	function get(){
 		if($_SERVER['REQUEST_METHOD'] != "GET"){
-			header($_SERVER["SERVER_PROTOCOL"] . " 406 Not Acceptable");
-			echo json_encode(array("error"=>"The protocole methode is not acceptable, you may use GET."));
+			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use GET."));
 			die();
 		}
 
 		if(!isset($_GET["path"])){
-			header($_SERVER["SERVER_PROTOCOL"]."400 Bad Request");
-			echo json_encode(array("error"=>"The path hasn't be precised."));
+			ResponseJSON::response("400 Bad Request", array("error"=>"The path hasn't be precised."));
 			die();
 		}
 
 		$ftp = FTPConnexion::getFTP();
 		if(!$ftp){
-			header($_SERVER["SERVER_PROTOCOL"] . "400 Bad Request");
-			echo json_encode(array("error"=>"Error in the connection to the FTP Server."));
+			ResponseJSON::responseErrorConnectFTP();
 			die();
 		}
+
 		$path = PathCorrecter::addFinalSlashIfNotPresent($_GET["path"]);
 		$splitSlash = explode("/", $path);
 		$splitPoint = explode(".", $path);
@@ -42,8 +40,7 @@ class ControllerFile extends ControllerElement {
 
 		if(!ftp_fget($ftp,$file,$path,FTP_BINARY)){
 			ftp_close($ftp);
-			header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
-			echo json_encode(array("error"=>$path. " has not been found"),JSON_UNESCAPED_SLASHES);
+			ResponseJSON::response("400 Bad Request", array("error"=>$path. " has not been found"));
 			die();
 		}
 
@@ -58,8 +55,7 @@ class ControllerFile extends ControllerElement {
 			header("Content-Disposition: attachment; filename=".$filename);
 			readfile($attachment_location);
 		} else {
-			header($_SERVER["SERVER_PROTOCOL"] . "500 Internal Server Error");
-			json_encode(array("error"=>"The server can't find the temp file."));
+			ResponseJSON::response("500 Internal Server Error",array("error"=>"The server can't find the temp file."));
 		}
 		die();
 	}
@@ -68,74 +64,66 @@ class ControllerFile extends ControllerElement {
 	 * @return void
 	 */
 	function put(){
-		if($_SERVER['REQUEST_METHOD'] != "POST"){
-			header($_SERVER["SERVER_PROTOCOL"] . " 406 Not Acceptable");
-			echo json_encode(array("error"=>"The protocole methode is not acceptable, you may use POST."));
+		if($_SERVER['REQUEST_METHOD'] != "PUT"){
+			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use PUT."));
 			die();
 		}
 
-		if(!isset($_POST["path"],$_FILES["fileToUpload"])){
-			//error
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>"The path or the file has not been precised."));
+		parse_str(file_get_contents("php://input"),$_PUT);
+
+		if(!isset($_PUT["path"],$_FILES["fileToUpload"])){
+			ResponseJSON::response("400 Bad Request",array("error"=>"The path or the file has not been precised."));
 			die();
 		}
 
 		$ftp = FTPConnexion::getFTP();
 		if(!$ftp){
-			header($_SERVER["SERVER_PROTOCOL"] . "400 Bad Request");
-			echo json_encode(array("error"=>"Error in the connection to the FTP Server."));
+			ResponseJSON::responseErrorConnectFTP();
 			die();
 		}
 
-		$path = PathCorrecter::addFinalSlashIfNotPresent($_POST['path']);
+		$path = PathCorrecter::addFinalSlashIfNotPresent($_PUT['path']);
 
 		if(!ftp_put($ftp,$path.$_FILES['fileToUpload']['name'],$_FILES['fileToUpload']['tmp_name'],FTP_BINARY)) {
-			//error
 			ftp_close($ftp);
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>$path.$_FILES['fileToUpload']['name']." not found."),JSON_UNESCAPED_SLASHES);
+			ResponseJSON::response("404 Not Found", array("error"=>$path.$_FILES['fileToUpload']['name']." not found."));
 			die();
 		}
 
 		//Success
 		ftp_close($ftp);
-		header($_SERVER["SERVER_PROTOCOL"]. " 201 Created");
+		ResponseJSON::response("201 Created",null);
 	}
 
 	function delete(){
 		if($_SERVER['REQUEST_METHOD'] != "DELETE"){
-			header($_SERVER["SERVER_PROTOCOL"] . " 406 Not Acceptable");
-			echo json_encode(array("error"=>"The protocole methode is not acceptable, you may use DELETE."));
+			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use DELETE."));
 			die();
 		}
 
 		parse_str(file_get_contents("php://input"),$_DELETE);
 
 		if(!isset($_DELETE["path"])){
-			header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
-			echo json_encode(array("error"=>"You need to precise the path"));
+			ResponseJSON::response("400 Bad Request",array("error"=>"You need to precise the path"));
 			die();
 		}
 
 		$ftp = FTPConnexion::getFTP();
 		if(!$ftp){
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>"Error in the connection to the FTP Server."));
+			ResponseJSON::response("400 Bad Request",array("error"=>"Error in the connection to the FTP Server."));
 			die();
 		}
 
 		if (!ftp_delete($ftp, $_DELETE["path"])) {
-			//error
 			ftp_close($ftp);
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>$_DELETE['path']." not found."),JSON_UNESCAPED_SLASHES);
-			return;
+			ResponseJSON::response("404 Not Found",array("error"=>$_DELETE['path']." is not a file or not found."));
+			die();
 		}
 
 		//success
 		ftp_close($ftp);
-		header($_SERVER["SERVER_PROTOCOL"] . " 204 OK");
+		ResponseJSON::response("204 OK",null);
+		die();
 	}
 
 	/**
@@ -143,27 +131,32 @@ class ControllerFile extends ControllerElement {
 	 * @return void
 	 */
 	function move(){
-		if(!isset($_POST["pathSrc"],$_POST["pathDst"],$_POST["filename"])){
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>"You need to precise the path source, the path destination and the file name."));
+		if($_SERVER['REQUEST_METHOD'] != "POST"){
+			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use POST."));
 			die();
 		}
+
+		if(!isset($_POST["pathSrc"],$_POST["pathDst"],$_POST["filename"])){
+			ResponseJSON::response("400 Bad Request",array("error"=>"You need to precise the path source, the path destination and the file name."));
+			die();
+		}
+
 		$ftp = FTPConnexion::getFTP();
 		if(!$ftp){
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=>"Error in the connection to the FTP Server."));
+			ResponseJSON::responseErrorConnectFTP();
 			die();
 		}
+
 		$pathSrc = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathSrc"]).$_POST["filename"];
 		$pathDst = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathDst"]).$_POST["filename"];
+
 		if(!ftp_rename($ftp, $pathSrc, $pathDst)){
 			ftp_close($ftp);
-			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-			echo json_encode(array("error"=> $pathSrc. " not found or ". $pathDst . " not found/already exists"));
+			ResponseJSON::response("400 Bad Request",array("error"=> $pathSrc. " not found or ". $pathDst . " not found or already exists"));
 			die();
 		}
 		ftp_close($ftp);
-		header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+		ResponseJSON::response("200 OK",null);
 		die();
 	}
 }

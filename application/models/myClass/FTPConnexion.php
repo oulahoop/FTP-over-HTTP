@@ -4,7 +4,7 @@ class FTPConnexion extends CI_Model{
 	static function getFTP()
 	{
 		$ftp = ftp_connect("ftp.drivehq.com");
-		if(ftp_login($ftp, "cacamouille","AZERTYuiop1"))
+		if(ftp_login($ftp, "MegaChiasse","AZERTYuiop1"))
 			return $ftp;
 		return false;
 	}
