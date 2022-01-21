@@ -108,8 +108,25 @@ class ControllerDirectory extends ControllerElement
 			echo json_encode(array("error"=>"Error in the connection to the FTP Server."));
 			die();
 		}
+
+		//Check si le dossier est vide pour pas renvoyer d'erreur
+		$array = explode("/", $path);
+		$dir = "./";
+		for($i = 0; $i<sizeof($array)-1;$i++){
+			$dir.=$array[$i];
+		}
+		$dirTest = ftp_nlist($ftp, $dir);
+		if(!$dirTest){
+			ftp_close($ftp);
+			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+			echo json_encode(array("error"=>$path." is not a directory or not found"),JSON_UNESCAPED_SLASHES);
+			die();
+		}
+		$lastDir = end($array);
+
 		$list = ftp_nlist($ftp, $path);
-		if (!$list) {
+
+		if (!$list && !in_array($lastDir, $dirTest)) {
 			ftp_close($ftp);
 			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
 			echo json_encode(array("error"=>$path. " is not a directory or not found"),JSON_UNESCAPED_SLASHES);
@@ -135,8 +152,24 @@ class ControllerDirectory extends ControllerElement
 			die();
 		}
 
+		$array = explode("/", $path);
+		$dir = "./";
+		for($i = 0; $i<sizeof($array)-1;$i++){
+			$dir.=$array[$i];
+		}
+		$dirTest = ftp_nlist($ftp, $dir);
+		if(!$dirTest){
+			ftp_close($ftp);
+			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+			echo json_encode(array("error"=>$path." is not a directory or not found"),JSON_UNESCAPED_SLASHES);
+			die();
+		}
+		$lastDir = end($array);
+
+
 		$list = ftp_mlsd($ftp,$path);
-		if(!$list){
+		ftp_close($ftp);
+		if(!$list && !in_array($lastDir, $dirTest)){
 			header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
 			echo json_encode(array("error"=>$path." is not a directory or not found"),JSON_UNESCAPED_SLASHES);
 			die();
