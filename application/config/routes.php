@@ -52,3 +52,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+//Route for API
+
+//files
+$route['v1/files/put'] = 'v1/ControllerFile/put';
+$route['v1/files/get'] = 'v1/ControllerFile/get';
+$route['v1/files/delete'] = 'v1/ControllerFile/delete';
+$route['v1/files/move'] = 'v1/ControllerFile/move';
+
+//elements
+$route['v1/elements/rename'] = 'v1/ControllerElement/rename';
+$route['v1/files/rename'] = 'v1/ControllerFile/rename';
+$route['v1/dirs/rename'] = 'v1/ControllerDirectory/rename';
+
+//directory
+$route['v1/dirs/mkdir'] = 'v1/ControllerDirectory/mkdir';
+$route['v1/dirs/rmdir'] = 'v1/ControllerDirectory/rmdir';
+$route['v1/dirs/ls'] = 'v1/ControllerDirectory/ls';
+$route['v1/dirs/lsl'] = 'v1/ControllerDirectory/lsl';
+$route['v1/dirs/pwd'] = 'v1/ControllerDirectory/pwd';
+
