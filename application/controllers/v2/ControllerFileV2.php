@@ -1,19 +1,32 @@
 <?php
 
-require_once "ControllerElement.php";
+require_once "ControllerElementV2.php";
 
-class ControllerFile extends ControllerElement {
+class ControllerFileV2 extends ControllerElementV2 {
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
+	public function index(){
+		switch ($_SERVER['REQUEST_METHOD']){
+			case "PUT" :
+				$this->put();
+			case "GET" :
+				$this->get();
+			case "DELETE" :
+				$this->delete();
+			default :
+				ResponseJSON::response("400 Bad Request", array("error"=>"You're using the wrong protocol."));
+		}
+	}
+
 	/**
 	 * GET
 	 * @return void
 	 */
-	function get(){
+	private function get(){
 		if($_SERVER['REQUEST_METHOD'] != "GET"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use GET."));
 			die();
@@ -29,8 +42,6 @@ class ControllerFile extends ControllerElement {
 			ResponseJSON::responseErrorConnectFTP();
 			die();
 		}
-
-
 		$path = PathCorrecter::addFinalSlashIfNotPresent($_GET["path"]);
 		$splitSlash = explode("/", $_GET["path"]);
 		$splitPoint = explode(".", $path);
@@ -68,7 +79,7 @@ class ControllerFile extends ControllerElement {
 	/**
 	 * @return void
 	 */
-	function put(){
+	private function put(){
 		if($_SERVER['REQUEST_METHOD'] != "PUT"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use PUT."));
 			die();
@@ -100,7 +111,7 @@ class ControllerFile extends ControllerElement {
 		ResponseJSON::response("201 Created",null);
 	}
 
-	function delete(){
+	private function delete(){
 		if($_SERVER['REQUEST_METHOD'] != "DELETE"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use DELETE."));
 			die();

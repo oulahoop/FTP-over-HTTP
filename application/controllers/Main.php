@@ -1,4 +1,5 @@
 <?php
+
 class Main extends CI_Controller {
 	function index(){
 		$test = array();
