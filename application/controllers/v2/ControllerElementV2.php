@@ -15,18 +15,18 @@ class ControllerElementV2 extends CI_Controller{
 	/**
 	 * @return false|string|void
 	 */
-	function rename(){
+	public function rename(){
 		if($_SERVER['REQUEST_METHOD'] != "POST"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use POST."));
 			die();
 		}
 
-		if(!isset($_POST["path"],$_POST["fileToRename"],$_POST["newName"])) {
+		if(!isset($_POST["path"],$_POST["previousName"],$_POST["newName"])) {
 			ResponseJSON::response("400 Bad Request", array("error"=>"A arguments is missing, you need to precise : the path, the file to rename and the new name"));
 			die();
 		}
 		$path = PathCorrecter::addFinalSlashIfNotPresent($_POST["path"]);
-		$fileToRename = $_POST["fileToRename"];
+		$previousName = $_POST["previousName"];
 		$newName = $_POST["newName"];
 
 		$ftp = FTPConnexion::getFTP();
@@ -35,10 +35,10 @@ class ControllerElementV2 extends CI_Controller{
 			die();
 		}
 
-		$rename = ftp_rename($ftp,$path.$fileToRename, $path.$newName);
+		$rename = ftp_rename($ftp,$path.$previousName, $path.$newName);
 		if(!$rename){
 			ftp_close($ftp);
-			ResponseJSON::response("404 Not Found", array("error"=>$path.$fileToRename. " doesn't exists."));
+			ResponseJSON::response("404 Not Found", array("error"=>$path.$previousName. " doesn't exists."));
 			die();
 		}
 		ftp_close($ftp);

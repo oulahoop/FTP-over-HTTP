@@ -86,7 +86,7 @@ class ControllerDirectoryV2 extends ControllerElementV2
 	/**
 	 * @return void
 	 */
-	function pwd(){
+	public function pwd(){
 		if($_SERVER['REQUEST_METHOD'] != "GET"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocole methode is not acceptable, you may use GET."));
 			die();

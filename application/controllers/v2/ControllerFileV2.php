@@ -87,7 +87,7 @@ class ControllerFileV2 extends ControllerElementV2 {
 
 		parse_str(file_get_contents("php://input"),$_PUT);
 
-		if(!isset($_PUT["path"],$_FILES["fileToUpload"])){
+		if(!isset($_PUT["path"],$_FILES["file"])){
 			ResponseJSON::response("400 Bad Request",array("error"=>"The path or the file has not been precised."));
 			die();
 		}
@@ -100,9 +100,9 @@ class ControllerFileV2 extends ControllerElementV2 {
 
 		$path = PathCorrecter::addFinalSlashIfNotPresent($_PUT['path']);
 
-		if(!ftp_put($ftp,$path.$_FILES['fileToUpload']['name'],$_FILES['fileToUpload']['tmp_name'],FTP_BINARY)) {
+		if(!ftp_put($ftp,$path.$_FILES['file']['name'],$_FILES['file']['tmp_name'],FTP_BINARY)) {
 			ftp_close($ftp);
-			ResponseJSON::response("404 Not Found", array("error"=>$path.$_FILES['fileToUpload']['name']." not found."));
+			ResponseJSON::response("404 Not Found", array("error"=>$path.$_FILES['file']['name']." not found."));
 			die();
 		}
 
@@ -142,11 +142,8 @@ class ControllerFileV2 extends ControllerElementV2 {
 		die();
 	}
 
-	/**
-	 *
-	 * @return void
-	 */
-	function move(){
+
+	public function move(){
 		if($_SERVER['REQUEST_METHOD'] != "POST"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use POST."));
 			die();
