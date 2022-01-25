@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to FTPoverHTTP’s documentation! &mdash; FTPoverHTTP  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> FTPoverHTTP
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to FTPoverHTTP’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#elements">Elements</a></li>
+<li><a class="reference internal" href="#files">Files</a></li>
+<li><a class="reference internal" href="#dirs">Dirs</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">FTPoverHTTP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to FTPoverHTTP’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-ftpoverhttp-s-documentation">
+<h1>Welcome to FTPoverHTTP’s documentation!<a class="headerlink" href="#welcome-to-ftpoverhttp-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+<section id="elements">
+<h1>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h1>
+<dl class="php class">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/elements</span></span></dt>
+<dd><p>Elements is used when the method can be used by a directory or a file.</p>
+<p>All the method can be used in the files and dirs section.</p>
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/elements/rename</span> <span class="pre">[POST]</span></span></dt>
+<dd><p>Rename an element to an other name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : the path where the element is.</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p>‘previousName’ : the previous name of the element.</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘newName’ : the new name of the element.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">06</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="files">
+<h1>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h1>
+<dl class="php class">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files</span></span></dt>
+<dd><blockquote>
+<div><dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files</span></span></dt>
+<dd><p>HTTP request method GET, DELETE or PUT.</p>
+<p>In function of the request methode, this will call the function get, delete or put.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="http://localhost/codeIgniter3/v2/files">http://localhost/codeIgniter3/v2/files</a></p>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files</span> <span class="pre">[GET]</span></span></dt>
+<dd><p>Get a file from the FTP Server.</p>
+<p>Need to use the GET HTTP methode.</p>
+<p>This methode is private, you need to pass by the index methode ( <a class="reference external" href="http://localhost/codeIgniter3/files">http://localhost/codeIgniter3/files</a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ The path to the file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">public</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Transfer</span><span class="o">-</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">Binary</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">103</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">attachment</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="n">OurAPI</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">text</span><span class="o">/</span><span class="n">plain</span>
+<span class="o">&lt;</span>
+<span class="n">Our</span> <span class="n">REST</span> <span class="n">API</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">FTP</span> <span class="n">over</span> <span class="n">HTTP</span><span class="o">.</span>
+<span class="n">From</span> <span class="n">HTTP</span> <span class="n">Request</span><span class="p">,</span> <span class="n">we</span> <span class="s2">&quot;translate&quot;</span> <span class="n">them</span> <span class="n">to</span> <span class="n">request</span> <span class="n">the</span> <span class="n">FTP</span> <span class="n">server</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files</span> <span class="pre">[DELETE]</span></span></dt>
+<dd><p>Delete a file from the FTP Server.</p>
+<p>Need to use the DELETE HTTP methode.</p>
+<p>This methode is private, you need to pass by the index methode ( <a class="reference external" href="http://localhost/codeIgniter3/files">http://localhost/codeIgniter3/files</a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path to the file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">41</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Error will send a 400 or more code error and a JSON Object with the error message.</p>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files</span> <span class="pre">[PUT]</span></span></dt>
+<dd><p>Put a file in the FTP Server.</p>
+<p>Need to use the PUT HTTP methode.</p>
+<p>This methode is private, you need to pass by the index method ( <a class="reference external" href="http://localhost/codeIgniter3/files">http://localhost/codeIgniter3/files</a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path to the directory where you want the file to be in.</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p>‘file’ : The file to be uploaded</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>HTTP Response</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div></blockquote>
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/files/move</span> <span class="pre">[POST]</span></span></dt>
+<dd><p>Move a file from a directory to another.</p>
+<p>Need to use the POST HTTP methode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘pathSrc’ : The path to the directory where the file is.</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p>‘pathDst’ : The path to the directory where you want to move the file.</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘filename’ : The name of the file.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="dirs">
+<h1>Dirs<a class="headerlink" href="#dirs" title="Permalink to this headline">¶</a></h1>
+<dl class="php class">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs</span></span></dt>
+<dd><dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs</span></span></dt>
+<dd><p>Accessible with HTTP request method POST, GET or DELETE.</p>
+<p>In function of the request methode, this will call respectively the function mkdir, ls or rmdir.</p>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs</span> <span class="pre">[POST]</span></span></dt>
+<dd><p>Create a new directory. (equivalent to a mkdir)</p>
+<p>You need to use the index method with POST HTTP method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path with the new directory include.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs</span> <span class="pre">[DELETE]</span></span></dt>
+<dd><p>Remove a directory. (equivalent to a rmdir)</p>
+<p>This will remove all the files and directory inside the directory who is deleted.</p>
+<p>You need to use the index method with DELETE HTTP method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path with the directory to remove include.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">39</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs</span> <span class="pre">[GET]</span></span></dt>
+<dd><p>List all the directory and the file name. (equivalent to a ls)</p>
+<p>If no path has been precised, this will send the result command with the current directory (.).</p>
+<p>You need to use the index method with GET HTTP method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path to list all the file and directory names</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response with JSON Object</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">32</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">763</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="o">&lt;</span>
+<span class="p">[</span>
+        <span class="s2">&quot;Directory1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Directory2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;File1.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;File2.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;File3.txt&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs/lsl</span> <span class="pre">[GET]</span></span></dt>
+<dd><p>List all the directory and the file with more informations. (equivalent to a ls -l)</p>
+<p>If no path has been precised, this will send the result command with the current directory (.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>‘path’ : The path to list all the file and directory names</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP Response with JSON Object</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">763</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="o">&lt;</span>
+<span class="p">[</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Directory1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;138&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;el&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220121153436&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Directory2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;3093195&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;el&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220121153436&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File1.txt&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;18&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124140956&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File2.txt&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;111&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124141018&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File3.txt&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;71&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124141051&quot;</span>
+        <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="php method">
+<dt class="sig sig-object php">
+<span class="sig-name descname"><span class="pre">v2/dirs/pwd</span> <span class="pre">[GET]</span></span></dt>
+<dd><p>Return the current path to the current directory</p>
+<p>Need to use the GET HTTP method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>HTTP Response with JSON Object</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">53</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">11</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="o">&lt;</span>
+<span class="p">{</span>
+        <span class="s2">&quot;pwd&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, CAUBERE Maël BERVOAS Nicolas PEGNE Baptiste PERINE Loic.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

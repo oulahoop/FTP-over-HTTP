@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Test</title>
+</head>
+
+
+<body>
+	<p>Rename</p>
+	<form action="http://localhost/codeIgniter3/v1/elements/rename" method="POST">
+		<label for="pathRename">PathSrc : </label>
+		<input type="text" name="path" id="pathRename"><br>
+
+		<label for="fileToRename">fileToRename : </label>
+		<input type="text" name="fileToRename" id="fileToRename"><br>
+
+		<label for="newName">newName : </label>
+		<input type="text" name="newName" id="newName"><br>
+		<input type="submit">
+	</form>
+
+	<br><br>
+
+	<p>Get</p>
+	<form action="http://localhost/codeIgniter3/index.php/v1/files/get" method="GET">
+		<label for="pathGet">Path : </label>
+		<input type="text" name="path" id="pathGet"><br>
+		<input type="submit">
+
+	</form>
+	<br><br>
+	<p>Put</p>
+	<form action="http://localhost/codeIgniter3/index.php/v1/ControllerFile/put" method="POST" enctype="multipart/form-data">
+		<label for="pathPut">Path : </label>
+		<input type="text" name="path" id="pathPut"><br>
+
+		<input type="file" name="fileToUpload" id="fileToUpload"><br>
+		<input type="submit">
+	</form>
+	<br><br>
+
+	<p>mkdir</p>
+	<form action="http://localhost/codeIgniter3/index.php/v1/ControllerDirectory/mkdir" method="POST">
+		<label for="pathMkdir">Path : </label>
+		<input type="text" name="path" id="pathMkdir"><br>
+		<input type="submit">
+	</form>
+</body>

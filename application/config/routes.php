@@ -52,3 +52,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+//Route for API
+
+//files
+$route['v1/files/put'] = 'v1/ControllerFile/put';
+$route['v1/files/get'] = 'v1/ControllerFile/get';
+$route['v1/files/delete'] = 'v1/ControllerFile/delete';
+$route['v1/files/move'] = 'v1/ControllerFile/move';
+
+//elements
+$route['v1/elements/rename'] = 'v1/ControllerElement/rename';
+$route['v1/files/rename'] = 'v1/ControllerFile/rename';
+$route['v1/dirs/rename'] = 'v1/ControllerDirectory/rename';
+
+//directory
+$route['v1/dirs/mkdir'] = 'v1/ControllerDirectory/mkdir';
+$route['v1/dirs/rmdir'] = 'v1/ControllerDirectory/rmdir';
+$route['v1/dirs/ls'] = 'v1/ControllerDirectory/ls';
+$route['v1/dirs/lsl'] = 'v1/ControllerDirectory/lsl';
+$route['v1/dirs/pwd'] = 'v1/ControllerDirectory/pwd';
+
+
+//V2
+//Files
+$route['v2/files'] = 'v2/ControllerFileV2/index';
+$route['v2/files/put'] = 'v2/ControllerFileV2/put';
+$route['v2/files/get'] = 'v2/ControllerFileV2/get';
+$route['v2/files/delete'] = 'v2/ControllerFileV2/delete';
+$route['v2/files/move'] = 'v2/ControllerFileV2/move';
+
+//elements
+$route['v2/elements/rename'] = 'v2/ControllerElementV2/rename';
+$route['v2/files/rename'] = 'v2/ControllerFileV2/rename';
+$route['v2/dirs/rename'] = 'v2/ControllerDirectoryV2/rename';
+
+//directory
+$route['v2/dirs'] = 'v2/ControllerDirectoryV2/index';
+$route['v2/dirs/mkdir'] = 'v2/ControllerDirectoryV2/mkdir';
+$route['v2/dirs/rmdir'] = 'v2/ControllerDirectoryV2/rmdir';
+$route['v2/dirs/ls'] = 'v2/ControllerDirectoryV2/ls';
+$route['v2/dirs/lsl'] = 'v2/ControllerDirectoryV2/lsl';
+$route['v2/dirs/pwd'] = 'v2/ControllerDirectoryV2/pwd';
+
