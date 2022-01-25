@@ -13,8 +13,6 @@ class ControllerDirectoryV2 extends ControllerElementV2
 		switch ($_SERVER['REQUEST_METHOD']){
 			case "POST" :
 				$this->mkdir();
-			case "GET" :
-				$this->ls();
 			case "DELETE" :
 				$this->rmdir();
 			default :
@@ -110,7 +108,7 @@ class ControllerDirectoryV2 extends ControllerElementV2
 	/**
 	 * @return void
 	 */
-	private function ls()
+	public function ls()
 	{
 		if($_SERVER['REQUEST_METHOD'] != "GET"){
 			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocole methode is not acceptable, you may use GET."));
