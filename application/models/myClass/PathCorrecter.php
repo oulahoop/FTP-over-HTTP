@@ -8,4 +8,9 @@ class PathCorrecter{
 			$path .= "/";
 		return $path;
 	}
+
+	static function replaceBackSlashToSlash($path) : string
+	{
+		return str_replace('\\', '/', $path);
+	}
 }

@@ -42,30 +42,27 @@ class ControllerFileV2 extends ControllerElementV2 {
 			ResponseJSON::responseErrorConnectFTP();
 			die();
 		}
-		$path = PathCorrecter::addFinalSlashIfNotPresent($_GET["path"]);
-		$splitSlash = explode("/", $_GET["path"]);
-		$splitPoint = explode(".", $path);
+		$path = PathCorrecter::replaceBackSlashToSlash($_GET["path"]);
+		$splitSlash = explode("/", $path);
 		$filename = end($splitSlash);
-		$extension = end($splitPoint);
 		$file = fopen($_SERVER['DOCUMENT_ROOT']."/uploads/".$filename,"wr");
+
 		if(!$file){
 			ftp_close($ftp);
 			ResponseJSON::response("400 Bad Request", array("error","File not found "));
 			die();
 		}
-
 		if(!ftp_fget($ftp,$file,$path,FTP_BINARY)){
 			ftp_close($ftp);
 			ResponseJSON::response("400 Bad Request", array("error"=>$path. " has not been found"));
 			die();
 		}
-
 		ftp_close($ftp);
 		$attachment_location = $_SERVER["DOCUMENT_ROOT"] . "/uploads/" . $filename;
 		if (file_exists($attachment_location)) {
 			header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
 			header("Cache-Control: public"); // needed for internet explorer
-			header("Content-Type: application/".$extension);
+			header("Content-Type: application/".mime_content_type($attachment_location));
 			header("Content-Transfer-Encoding: Binary");
 			header("Content-Length:".filesize($attachment_location));
 			header("Content-Disposition: attachment; filename=".$filename);

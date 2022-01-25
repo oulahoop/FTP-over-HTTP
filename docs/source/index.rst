@@ -30,17 +30,25 @@ Elements
 	All the method can be used in the files and dirs section.
 
 
-	.. php:method:: rename()
+	.. php:method:: v2/elements/rename [POST]
 
 		Rename an element to an other name.
-
-		Need to use the POST HTTP method.
 
 		:param: 'path' : the path where the element is.
 		:param: 'previousName' : the previous name of the element.
 		:param: 'newName' : the new name of the element.
 		:returns: HTTP Response.
 
+		::
+
+				< HTTP/1.1 200 OK
+				< Date: Mon, 24 Jan 2022 23:35:06 GMT
+				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+				< X-Powered-By: PHP/8.0.14
+				< Content-Length: 0
+				< Content-Type: text/html; charset=UTF-8
+
+		..
 
 
 Files
@@ -49,16 +57,16 @@ Files
 .. php:class:: 	v2/files
 
 
-	.. php:method:: index()
+	.. php:method:: v2/files
 
 		HTTP request method GET, DELETE or PUT.
 
 		In function of the request methode, this will call the function get, delete or put.
 
 
-		.. note:: link : http://localhost/codeIgniter3/v2/files
+		.. note:: http://localhost/codeIgniter3/v2/files
 
-	.. php:method:: get()
+	.. php:method:: v2/files [GET]
 
 		Get a file from the FTP Server.
 
@@ -69,9 +77,26 @@ Files
 		:param: 'path' The path to the file
 		:returns: HTTP Response
 
+		::
+
+			< HTTP/1.1 200 OK
+			< Date: Mon, 24 Jan 2022 23:22:13 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Cache-Control: public
+			< Content-Transfer-Encoding: Binary
+			< Content-Length: 103
+			< Content-Disposition: attachment; filename=OurAPI.txt
+			< Content-Type: application/text/plain
+			<
+			Our REST API is called FTP over HTTP.
+			From HTTP Request, we "translate" them to request the FTP server.
+
+		..
 
 
-	.. php:method:: delete()
+
+	.. php:method:: v2/files [DELETE]
 
 		Delete a file from the FTP Server.
 
@@ -84,18 +109,21 @@ Files
 
 		::
 
-				HTTP/1.1 204 OK
+				< HTTP/1.1 204 OK
+				< Date: Mon, 24 Jan 2022 23:38:41 GMT
+				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+				< X-Powered-By: PHP/8.0.14
 
 		.. note:: Error will send a 400 or more code error and a JSON Object with the error message.
 
 
-	.. php:method:: put()
+	.. php:method:: v2/files [PUT]
 
 		Put a file in the FTP Server.
 
 		Need to use the PUT HTTP methode.
 
-		This methode is private, you need to pass by the index methode ( http://localhost/codeIgniter3/files ).
+		This methode is private, you need to pass by the index method ( http://localhost/codeIgniter3/files ).
 
 		:param: 'path' : The path to the directory where you want the file to be in.
 		:param: 'file' : The file to be uploaded
@@ -103,12 +131,14 @@ Files
 
 		::
 
-				HTTP/1.1 201 Created
+				< HTTP/1.1 201 Created
+				< Date: Tue, 25 Jan 2022 00:13:13 GMT
+				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+				< X-Powered-By: PHP/8.0.14
 
-		.. note:: Error will send a 400 or more code error and a JSON Object with the error message.
+		..
 
-
-  .. php:method:: move()
+  .. php:method:: v2/files/move [POST]
 
 		Move a file from a directory to another.
 
@@ -118,7 +148,16 @@ Files
 		:param: 'pathDst' : The path to the directory where you want to move the file.
 		:param: 'filename' : The name of the file.
 
-		Accessible by : http://localhost/v2/files/move
+		::
+
+			< HTTP/1.1 200 OK
+			< Date: Mon, 24 Jan 2022 23:51:47 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 0
+			< Content-Type: text/html; charset=UTF-8
+
+		..
 
 
 Dirs
@@ -126,40 +165,74 @@ Dirs
 
 .. php:class:: v2/dirs
 
-	.. php:method:: index()
+	.. php:method:: v2/dirs
 
 		Accessible with HTTP request method POST, GET or DELETE.
 
 		In function of the request methode, this will call respectively the function mkdir, ls or rmdir.
 
-	.. php:method:: mkdir()
+	.. php:method:: v2/dirs [POST]
 
-		Create a new directory.
+		Create a new directory. (equivalent to a mkdir)
+
+		You need to use the index method with POST HTTP method.
 
 		:param: 'path' : The path with the new directory include.
 		:returns: HTTP Response
 
-	.. php:method:: rmdir()
+		::
 
-		Remove a directory.
+			< HTTP/1.1 201 Created
+			< Date: Tue, 25 Jan 2022 00:13:13 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 0
+			< Content-Type: text/html; charset=UTF-8
+
+		..
+
+
+	.. php:method:: v2/dirs [DELETE]
+
+		Remove a directory. (equivalent to a rmdir)
 
 		This will remove all the files and directory inside the directory who is deleted.
+
+		You need to use the index method with DELETE HTTP method.
 
 		:param: 'path' : The path with the directory to remove include.
 		:returns: HTTP Response
 
-	.. php:method:: ls()
+		::
 
-		List all the directory and the file name
+			< HTTP/1.1 204 OK
+			< Date: Tue, 25 Jan 2022 00:12:39 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+
+		..
+
+	.. php:method:: v2/dirs [GET]
+
+		List all the directory and the file name. (equivalent to a ls)
 
 		If no path has been precised, this will send the result command with the current directory (.).
+
+		You need to use the index method with GET HTTP method.
+
 
 		:param: 'path' : The path to list all the file and directory names
 		:returns: HTTP Response with JSON Object
 
 		::
 
-			Example :
+			< HTTP/1.1 200 OK
+			< Date: Tue, 25 Jan 2022 00:11:32 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 763
+			< Content-Type: text/html; charset=UTF-8
+			<
 			[
 				"Directory1",
 				"Directory2",
@@ -170,9 +243,9 @@ Dirs
 
 		..
 
-	.. php:method:: lsl()
+	.. php:method:: v2/dirs/lsl [GET]
 
-		List all the directory and the file with more information than "ls()" function.
+		List all the directory and the file with more informations. (equivalent to a ls -l)
 
 		If no path has been precised, this will send the result command with the current directory (.).
 
@@ -181,7 +254,13 @@ Dirs
 
 		::
 
-			Example :
+			< HTTP/1.1 200 OK
+			< Date: Tue, 25 Jan 2022 00:10:30 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 763
+			< Content-Type: text/html; charset=UTF-8
+			<
 			[
 				{
 					"name":"Directory1",
@@ -221,7 +300,7 @@ Dirs
 			]
 
 		..
-	.. php:method:: pwd()
+	.. php:method:: v2/dirs/pwd [GET]
 
 		Return the current path to the current directory
 
@@ -231,6 +310,13 @@ Dirs
 
 		::
 
+			< HTTP/1.1 200 OK
+			< Date: Tue, 25 Jan 2022 00:09:53 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 11
+			< Content-Type: text/html; charset=UTF-8
+			<
 			{
 				"pwd":"/"
 			}
