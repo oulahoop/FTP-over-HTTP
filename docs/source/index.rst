@@ -11,71 +11,36 @@ Welcome to FTPoverHTTP's documentation!
    :caption: Contents:
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-
-Elements
-==================
-
-.. php:class:: v2/elements
-
-	Elements is used when the method can be used by a directory or a file.
-
-	All the method can be used in the files and dirs section.
-
-
-	.. php:method:: v2/elements/rename [POST]
-
-		Rename an element to an other name.
-
-		:param: 'path' : the path where the element is.
-		:param: 'previousName' : the previous name of the element.
-		:param: 'newName' : the new name of the element.
-		:returns: HTTP Response.
-
-		::
-
-				< HTTP/1.1 200 OK
-				< Date: Mon, 24 Jan 2022 23:35:06 GMT
-				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
-				< X-Powered-By: PHP/8.0.14
-				< Content-Length: 0
-				< Content-Type: text/html; charset=UTF-8
-
-		..
-
-
 Files
 ==================
 
 .. php:class:: 	v2/files
 
-
 	.. php:method:: v2/files
 
-		HTTP request method GET, DELETE or PUT.
+		Depending on the verb, this will:
 
-		In function of the request methode, this will call the function get, delete or put.
+			- put a file (PUT).
+
+			- download a file (GET).
+
+			- delete a file (DELETE).
 
 
-		.. note:: http://localhost/codeIgniter3/v2/files
+	.. php:method:: v2/files?path= [GET]
 
-	.. php:method:: v2/files [GET]
+		Download a file from the FTP Server.
 
-		Get a file from the FTP Server.
+		:param: 'path' : The path to the file
+		:returns: HTTP Response :
 
-		Need to use the GET HTTP methode.
+					- 200 OK.
 
-		This methode is private, you need to pass by the index methode ( http://localhost/codeIgniter3/files ).
+					- 400 Bad Request.
 
-		:param: 'path' The path to the file
-		:returns: HTTP Response
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -94,18 +59,20 @@ Files
 
 		..
 
-
-
 	.. php:method:: v2/files [DELETE]
 
-		Delete a file from the FTP Server.
-
-		Need to use the DELETE HTTP methode.
-
-		This methode is private, you need to pass by the index methode ( http://localhost/codeIgniter3/files ).
+		Delete a file from the FTP Server. Path need to be precised in the body.
 
 		:param: 'path' : The path to the file
-		:returns: HTTP Response
+		:returns: HTTP Response :
+
+					- 204 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -114,20 +81,23 @@ Files
 				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
 				< X-Powered-By: PHP/8.0.14
 
-		.. note:: Error will send a 400 or more code error and a JSON Object with the error message.
-
+		..
 
 	.. php:method:: v2/files [PUT]
 
-		Put a file in the FTP Server.
-
-		Need to use the PUT HTTP methode.
-
-		This methode is private, you need to pass by the index method ( http://localhost/codeIgniter3/files ).
+		Upload a file in the FTP Server. Path and file need to be precised in the body.
 
 		:param: 'path' : The path to the directory where you want the file to be in.
-		:param: 'file' : The file to be uploaded
-		:returns: HTTP Response
+		:param: 'file' : The file to be uploaded.
+		:returns: HTTP Response :
+
+					- 201 Created.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -138,15 +108,22 @@ Files
 
 		..
 
-  .. php:method:: v2/files/move [POST]
+	.. php:method:: v2/files/move [POST]
 
-		Move a file from a directory to another.
-
-		Need to use the POST HTTP methode.
+		Move a file from a directory to another. The parameters need to be precised in the body.
 
 		:param: 'pathSrc' : The path to the directory where the file is.
 		:param: 'pathDst' : The path to the directory where you want to move the file.
 		:param: 'filename' : The name of the file.
+		:returns: HTTP Response :
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -159,6 +136,33 @@ Files
 
 		..
 
+	.. php:method:: v2/files/rename [POST]
+
+		Rename a file. The parameters need to be precised in the body.
+
+		:param: 'path' : The path to the directory of the file.
+		:param: 'previousName' : The previous name of the file.
+		:param: 'newName' : The new name of the file.
+		:returns: HTTP Response :
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
+
+		::
+
+			< HTTP/1.1 200 OK
+			< Date: Mon, 24 Jan 2022 23:52:17 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 0
+			< Content-Type: text/html; charset=UTF-8
+
+		..
 
 Dirs
 ==================
@@ -167,18 +171,25 @@ Dirs
 
 	.. php:method:: v2/dirs
 
-		Accessible with HTTP request method POST, GET or DELETE.
+		Depending on the verb, this will:
 
-		In function of the request methode, this will call respectively the function mkdir, ls or rmdir.
+			- create a new directory (POST)
+
+			- delete a directory and it's content (DELETE)
+
 
 	.. php:method:: v2/dirs [POST]
 
-		Create a new directory. (equivalent to a mkdir)
+		Create a new directory (equivalent to a mkdir). The path need to be precised in the body.
 
-		You need to use the index method with POST HTTP method.
+		:param: 'path' : The path with the new directory included.
+		:returns: HTTP Response :
 
-		:param: 'path' : The path with the new directory include.
-		:returns: HTTP Response
+					- 201 Created.
+
+					- 400 Bad Request.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -194,14 +205,20 @@ Dirs
 
 	.. php:method:: v2/dirs [DELETE]
 
-		Remove a directory. (equivalent to a rmdir)
+		Remove a directory (equivalent to a rmdir). The path need to be precised in the body.
 
-		This will remove all the files and directory inside the directory who is deleted.
+		This will remove all the files and directory inside the directory that is deleted.
 
-		You need to use the index method with DELETE HTTP method.
+		:param: 'path' : Path of the directory to delete
+		:returns: HTTP Response :
 
-		:param: 'path' : The path with the directory to remove include.
-		:returns: HTTP Response
+					- 204 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -212,17 +229,22 @@ Dirs
 
 		..
 
-	.. php:method:: v2/dirs [GET]
+	.. php:method:: v2/dirs/ls?path= [GET]
 
-		List all the directory and the file name. (equivalent to a ls)
+        List all elements of the directory with their names.
 
-		If no path has been precised, this will send the result command with the current directory (.).
-
-		You need to use the index method with GET HTTP method.
-
-
-		:param: 'path' : The path to list all the file and directory names
+		:param: 'path' : Path to the directory
 		:returns: HTTP Response with JSON Object
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
+
+		.. note:: If no path has been specified this will return the list of elements in the root (understand basic) directory
 
 		::
 
@@ -243,14 +265,24 @@ Dirs
 
 		..
 
-	.. php:method:: v2/dirs/lsl [GET]
 
-		List all the directory and the file with more informations. (equivalent to a ls -l)
 
-		If no path has been precised, this will send the result command with the current directory (.).
+	.. php:method:: v2/dirs/lsl?path= [GET]
 
-		:param: 'path' : The path to list all the file and directory names
+		List all the directory and the file with more information. (equivalent to a ls -l)
+
+		:param: 'path' : Path to the directory
 		:returns: HTTP Response with JSON Object
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
+
+		.. note:: If no path has been specified this will return the list of elements in the root (understand basic) directory
 
 		::
 
@@ -300,13 +332,20 @@ Dirs
 			]
 
 		..
+
 	.. php:method:: v2/dirs/pwd [GET]
 
-		Return the current path to the current directory
-
-		Need to use the GET HTTP method.
+		Return the current path to the current directory.
 
 		:returns: HTTP Response with JSON Object
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
 
 		::
 
@@ -320,5 +359,61 @@ Dirs
 			{
 				"pwd":"/"
 			}
+
+		..
+
+		.. php:method:: v2/files/rename [POST]
+
+		Rename a directory. The parameters need to be precised in the body.
+
+		:param: 'path' : The path to the directory of the directory.
+		:param: 'previousName' : The previous name of the directory.
+		:param: 'newName' : The new name of the directory.
+		:returns: HTTP Response :
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
+
+		::
+
+			< HTTP/1.1 200 OK
+			< Date: Mon, 24 Jan 2022 23:53:57 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 0
+			< Content-Type: text/html; charset=UTF-8
+
+		..
+
+	.. php:method:: v2/dirs/move [POST]
+
+		Move a directory from a directory to another. The parameters need to be precised in the body.
+
+		:param: 'pathSrc' : The path to the directory where the directory is.
+		:param: 'pathDst' : The path to the directory where you want to move the directory.
+		:param: 'filename' : The name of the directory.
+		:returns: HTTP Response :
+
+					- 200 OK.
+
+					- 400 Bad Request.
+
+					- 404 Not Found.
+
+					- 406 Not Acceptable
+
+		::
+
+			< HTTP/1.1 200 OK
+			< Date: Mon, 24 Jan 2022 23:51:47 GMT
+			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
+			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 0
+			< Content-Type: text/html; charset=UTF-8
 
 		..

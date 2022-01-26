@@ -18,7 +18,7 @@ class ControllerFileV2 extends ControllerElementV2 {
 			case "DELETE" :
 				$this->delete();
 			default :
-				ResponseJSON::response("400 Bad Request", array("error"=>"You're using the wrong protocol."));
+				ResponseJSON::response("406 Not Acceptable", array("error"=>"You're using the wrong protocol verb."));
 		}
 	}
 
@@ -27,10 +27,6 @@ class ControllerFileV2 extends ControllerElementV2 {
 	 * @return void
 	 */
 	private function get(){
-		if($_SERVER['REQUEST_METHOD'] != "GET"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use GET."));
-			die();
-		}
 
 		if(!isset($_GET["path"])){
 			ResponseJSON::response("400 Bad Request", array("error"=>"The path hasn't be precised."));
@@ -54,7 +50,7 @@ class ControllerFileV2 extends ControllerElementV2 {
 		}
 		if(!ftp_fget($ftp,$file,$path,FTP_BINARY)){
 			ftp_close($ftp);
-			ResponseJSON::response("400 Bad Request", array("error"=>$path. " has not been found"));
+			ResponseJSON::response("404 Not found", array("error"=>$path. " has not been found"));
 			die();
 		}
 		ftp_close($ftp);
@@ -77,13 +73,9 @@ class ControllerFileV2 extends ControllerElementV2 {
 	 * @return void
 	 */
 	private function put(){
-		if($_SERVER['REQUEST_METHOD'] != "PUT"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use PUT."));
-			die();
-		}
 
 		parse_str(file_get_contents("php://input"),$_PUT);
-
+		$_PUT["path"] = "./";
 		if(!isset($_PUT["path"],$_FILES["file"])){
 			ResponseJSON::response("400 Bad Request",array("error"=>"The path or the file has not been precised."));
 			die();
@@ -105,14 +97,10 @@ class ControllerFileV2 extends ControllerElementV2 {
 
 		//Success
 		ftp_close($ftp);
-		ResponseJSON::response("201 Created",null);
+			ResponseJSON::response("201 Created",null);
 	}
 
 	private function delete(){
-		if($_SERVER['REQUEST_METHOD'] != "DELETE"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use DELETE."));
-			die();
-		}
 
 		parse_str(file_get_contents("php://input"),$_DELETE);
 
@@ -140,33 +128,5 @@ class ControllerFileV2 extends ControllerElementV2 {
 	}
 
 
-	public function move(){
-		if($_SERVER['REQUEST_METHOD'] != "POST"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use POST."));
-			die();
-		}
 
-		if(!isset($_POST["pathSrc"],$_POST["pathDst"],$_POST["filename"])){
-			ResponseJSON::response("400 Bad Request",array("error"=>"You need to precise the path source, the path destination and the file name."));
-			die();
-		}
-
-		$ftp = FTPConnexion::getFTP();
-		if(!$ftp){
-			ResponseJSON::responseErrorConnectFTP();
-			die();
-		}
-
-		$pathSrc = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathSrc"]).$_POST["filename"];
-		$pathDst = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathDst"]).$_POST["filename"];
-
-		if(!ftp_rename($ftp, $pathSrc, $pathDst)){
-			ftp_close($ftp);
-			ResponseJSON::response("400 Bad Request",array("error"=> $pathSrc. " not found or ". $pathDst . " not found or already exists"));
-			die();
-		}
-		ftp_close($ftp);
-		ResponseJSON::response("200 OK",null);
-		die();
-	}
 }

@@ -2,7 +2,7 @@
 
 require_once "system/core/Controller.php";
 
-class ControllerElementV2 extends CI_Controller{
+abstract class ControllerElementV2 extends CI_Controller{
 
 	function __construct()
 	{
@@ -22,7 +22,7 @@ class ControllerElementV2 extends CI_Controller{
 		}
 
 		if(!isset($_POST["path"],$_POST["previousName"],$_POST["newName"])) {
-			ResponseJSON::response("400 Bad Request", array("error"=>"A arguments is missing, you need to precise : the path, the file to rename and the new name"));
+			ResponseJSON::response("400 Bad Request", array("error"=>"A arguments is missing, you need to precise : the path, the previous name of the element to rename and the new name"));
 			die();
 		}
 		$path = PathCorrecter::addFinalSlashIfNotPresent($_POST["path"]);
@@ -43,6 +43,36 @@ class ControllerElementV2 extends CI_Controller{
 		}
 		ftp_close($ftp);
 		ResponseJSON::response("200 OK",null);
+	}
+
+	public function move(){
+		if($_SERVER['REQUEST_METHOD'] != "POST"){
+			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocol methode is not acceptable, you may use POST."));
+			die();
+		}
+
+		if(!isset($_POST["pathSrc"],$_POST["pathDst"],$_POST["filename"])){
+			ResponseJSON::response("400 Bad Request",array("error"=>"You need to precise the path source, the path destination and the file name."));
+			die();
+		}
+
+		$ftp = FTPConnexion::getFTP();
+		if(!$ftp){
+			ResponseJSON::responseErrorConnectFTP();
+			die();
+		}
+
+		$pathSrc = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathSrc"]).$_POST["filename"];
+		$pathDst = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathDst"]).$_POST["filename"];
+
+		if(!ftp_rename($ftp, $pathSrc, $pathDst)){
+			ftp_close($ftp);
+			ResponseJSON::response("404 Not Found",array("error"=> $pathSrc. " not found or ". $pathDst . " not found"));
+			die();
+		}
+		ftp_close($ftp);
+		ResponseJSON::response("200 OK",null);
+		die();
 	}
 
 }

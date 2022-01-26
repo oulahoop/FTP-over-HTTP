@@ -20,14 +20,8 @@ class ControllerDirectoryV2 extends ControllerElementV2
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	private function mkdir(){
-		if($_SERVER['REQUEST_METHOD'] != "POST"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocole methode is not acceptable, you may use POST."));
-			die();
-		}
 
 		if(!isset($_POST["path"])){
 			ResponseJSON::response("400 Bad Request", array("error"=>"The path has not been precised."));
@@ -52,10 +46,6 @@ class ControllerDirectoryV2 extends ControllerElementV2
 	}
 
 	private function rmdir(){
-		if($_SERVER['REQUEST_METHOD'] != "DELETE"){
-			ResponseJSON::response("406 Not Acceptable", array("error"=>"The protocole methode is not acceptable, you may use DELETE."));
-			die();
-		}
 
 		parse_str(file_get_contents("php://input"),$_DELETE);
 
@@ -72,7 +62,7 @@ class ControllerDirectoryV2 extends ControllerElementV2
 
 		if(!ftp_rmdir($ftp,$_DELETE["path"])){
 			ftp_close($ftp);
-			ResponseJSON::response("400 Bad Request", array("error"=>$_DELETE. " is not found."));
+			ResponseJSON::response("404 Not Found", array("error"=>$_DELETE. " is not found."));
 
 			die();
 		}

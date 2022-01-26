@@ -81,12 +81,14 @@ $route['v2/files'] = 'v2/ControllerFileV2/index';
 $route['v2/files/put'] = 'v2/ControllerFileV2/put';
 $route['v2/files/get'] = 'v2/ControllerFileV2/get';
 $route['v2/files/delete'] = 'v2/ControllerFileV2/delete';
-$route['v2/files/move'] = 'v2/ControllerFileV2/move';
 
 //elements
-$route['v2/elements/rename'] = 'v2/ControllerElementV2/rename';
 $route['v2/files/rename'] = 'v2/ControllerFileV2/rename';
 $route['v2/dirs/rename'] = 'v2/ControllerDirectoryV2/rename';
+
+$route['v2/files/move'] = 'v2/ControllerFileV2/move';
+$route['v2/dirs/move'] = 'v2/ControllerDirectoryV2/move';
+
 
 //directory
 $route['v2/dirs'] = 'v2/ControllerDirectoryV2/index';
