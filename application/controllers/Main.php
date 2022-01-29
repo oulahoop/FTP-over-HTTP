@@ -2,6 +2,6 @@
 
 class Main extends CI_Controller {
 	function index(){
-		$this->load->view("form.html");
+		header("Location: docs/build/html/index.html");
 	}
 }

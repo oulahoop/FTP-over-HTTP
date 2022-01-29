@@ -98,3 +98,29 @@ $route['v2/dirs/ls'] = 'v2/ControllerDirectoryV2/ls';
 $route['v2/dirs/lsl'] = 'v2/ControllerDirectoryV2/lsl';
 $route['v2/dirs/pwd'] = 'v2/ControllerDirectoryV2/pwd';
 
+
+//V3
+
+//Files
+$route['v3/files'] = 'v3/ControllerFileV3/index';
+
+//elements
+$route['v3/files/rename'] = 'v3/ControllerFileV3/rename';
+$route['v3/dirs/rename'] = 'v3/ControllerDirectoryV3/rename';
+
+$route['v3/files/move'] = 'v3/ControllerFileV3/move';
+$route['v3/dirs/move'] = 'v3/ControllerDirectoryV3/move';
+
+
+//directory
+$route['v3/dirs'] = 'v3/ControllerDirectoryV3/index';
+$route['v3/dirs/ls'] = 'v3/ControllerDirectoryV3/ls';
+$route['v3/dirs/lsl'] = 'v3/ControllerDirectoryV3/lsl';
+$route['v3/dirs/pwd'] = 'v3/ControllerDirectoryV3/pwd';
+
+
+//Routes for DOCS
+
+$route['doc'] = 'Main';
+
+

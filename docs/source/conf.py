@@ -9,7 +9,6 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
@@ -45,6 +44,7 @@ language = 'en'
 exclude_patterns = []
 
 
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -67,5 +67,4 @@ from pygments.lexers.web import PhpLexer
 lexers["php"] = PhpLexer(startinline=True, linenos=1)
 lexers["php-annotations"] = PhpLexer(startinline=True, linenos=1)
 primary_domain = "php"
-
 

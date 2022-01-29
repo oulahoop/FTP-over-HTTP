@@ -17,7 +17,8 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="V2" href="v2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,13 +36,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to FTPoverHTTP’s documentation!</a></li>
-<li><a class="reference internal" href="#files">Files</a></li>
-<li><a class="reference internal" href="#dirs">Dirs</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="v2.html">V2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v3.html">V3</a></li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -68,486 +67,36 @@
              
   <section id="welcome-to-ftpoverhttp-s-documentation">
 <h1>Welcome to FTPoverHTTP’s documentation!<a class="headerlink" href="#welcome-to-ftpoverhttp-s-documentation" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>For our third semester of DUT Informatique, we had for project to make an API
+to use FTP commands through HTTP request.
+We make 3 differents versions but only 2 are documented and usable.
+Also, if you have any request or bug report, please contact us at <a class="reference external" href="mailto:mael&#46;caubere&#37;&#52;&#48;etu&#46;univ-nantes&#46;fr">mael<span>&#46;</span>caubere<span>&#64;</span>etu<span>&#46;</span>univ-nantes<span>&#46;</span>fr</a></p>
+<p>Here are the 2 documentations :</p>
 <div class="toctree-wrapper compound">
-</div>
-</section>
-<section id="files">
-<h1>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h1>
-<dl class="php class">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files</span></span></dt>
-<dd><dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files</span></span></dt>
-<dd><p>Depending on the verb, this will:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>put a file (PUT).</p></li>
-<li><p>download a file (GET).</p></li>
-<li><p>delete a file (DELETE).</p></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="v2.html">V2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="v2.html#files">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.html#dirs">Dirs</a></li>
 </ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files?path=</span> <span class="pre">[GET]</span></span></dt>
-<dd><p>Download a file from the FTP Server.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path to the file</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="v3.html">V3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="v3.html#files">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.html#dirs">Dirs</a></li>
 </ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">public</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Transfer</span><span class="o">-</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">Binary</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">103</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">attachment</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="n">OurAPI</span><span class="o">.</span><span class="n">txt</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">text</span><span class="o">/</span><span class="n">plain</span>
-<span class="o">&lt;</span>
-<span class="n">Our</span> <span class="n">REST</span> <span class="n">API</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">FTP</span> <span class="n">over</span> <span class="n">HTTP</span><span class="o">.</span>
-<span class="n">From</span> <span class="n">HTTP</span> <span class="n">Request</span><span class="p">,</span> <span class="n">we</span> <span class="s2">&quot;translate&quot;</span> <span class="n">them</span> <span class="n">to</span> <span class="n">request</span> <span class="n">the</span> <span class="n">FTP</span> <span class="n">server</span><span class="o">.</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files</span> <span class="pre">[DELETE]</span></span></dt>
-<dd><p>Delete a file from the FTP Server. Path need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path to the file</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>204 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
+</li>
 </ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">41</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-</pre></div>
 </div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files</span> <span class="pre">[PUT]</span></span></dt>
-<dd><p>Upload a file in the FTP Server. Path and file need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path to the directory where you want the file to be in.</p>
-</dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>‘file’ : The file to be uploaded.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>201 Created.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files/move</span> <span class="pre">[POST]</span></span></dt>
-<dd><p>Move a file from a directory to another. The parameters need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘pathSrc’ : The path to the directory where the file is.</p>
-</dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>‘pathDst’ : The path to the directory where you want to move the file.</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘filename’ : The name of the file.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files/rename</span> <span class="pre">[POST]</span></span></dt>
-<dd><p>Rename a file. The parameters need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path to the directory of the file.</p>
-</dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>‘previousName’ : The previous name of the file.</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘newName’ : The new name of the file.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">17</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="dirs">
-<h1>Dirs<a class="headerlink" href="#dirs" title="Permalink to this headline">¶</a></h1>
-<dl class="php class">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs</span></span></dt>
-<dd><dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs</span></span></dt>
-<dd><p>Depending on the verb, this will:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>create a new directory (POST)</p></li>
-<li><p>delete a directory and it’s content (DELETE)</p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs</span> <span class="pre">[POST]</span></span></dt>
-<dd><p>Create a new directory (equivalent to a mkdir). The path need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path with the new directory included.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>201 Created.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs</span> <span class="pre">[DELETE]</span></span></dt>
-<dd><p>Remove a directory (equivalent to a rmdir). The path need to be precised in the body.</p>
-<p>This will remove all the files and directory inside the directory that is deleted.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : Path of the directory to delete</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>204 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">39</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs/ls?path=</span> <span class="pre">[GET]</span></span></dt>
-<dd></dd></dl>
-
-<p>List all elements of the directory with their names.</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">param</dt>
-<dd class="field-odd"><p>‘path’ : Path to the directory</p>
-</dd>
-<dt class="field-even">returns</dt>
-<dd class="field-even"><p>HTTP Response with JSON Object</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If no path has been specified this will return the list of elements in the root (understand basic) directory</p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">32</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">763</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-<span class="o">&lt;</span>
-<span class="p">[</span>
-        <span class="s2">&quot;Directory1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Directory2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;File1.txt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;File2.txt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;File3.txt&quot;</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div></blockquote>
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs/lsl?path=</span> <span class="pre">[GET]</span></span></dt>
-<dd><p>List all the directory and the file with more information. (equivalent to a ls -l)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : Path to the directory</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response with JSON Object</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If no path has been specified this will return the list of elements in the root (understand basic) directory</p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">763</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-<span class="o">&lt;</span>
-<span class="p">[</span>
-        <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Directory1&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;138&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;el&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220121153436&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Directory2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;3093195&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;el&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220121153436&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File1.txt&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;18&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124140956&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File2.txt&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;111&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124141018&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;File3.txt&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="s2">&quot;71&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perm&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;modify&quot;</span><span class="p">:</span><span class="s2">&quot;20220124141051&quot;</span>
-        <span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs/pwd</span> <span class="pre">[GET]</span></span></dt>
-<dd><p>Return the current path to the current directory.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>HTTP Response with JSON Object</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">00</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">53</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">11</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-<span class="o">&lt;</span>
-<span class="p">{</span>
-        <span class="s2">&quot;pwd&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/files/rename</span> <span class="pre">[POST]</span></span></dt>
-<dd></dd></dl>
-
-<p>Rename a directory. The parameters need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘path’ : The path to the directory of the directory.</p>
-</dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>‘previousName’ : The previous name of the directory.</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘newName’ : The new name of the directory.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">57</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="php method">
-<dt class="sig sig-object php">
-<span class="sig-name descname"><span class="pre">v2/dirs/move</span> <span class="pre">[POST]</span></span></dt>
-<dd><p>Move a directory from a directory to another. The parameters need to be precised in the body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘pathSrc’ : The path to the directory where the directory is.</p>
-</dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>‘pathDst’ : The path to the directory where you want to move the directory.</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>‘filename’ : The name of the directory.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>HTTP Response :</p>
-<ul class="simple">
-<li><p>200 OK.</p></li>
-<li><p>400 Bad Request.</p></li>
-<li><p>404 Not Found.</p></li>
-<li><p>406 Not Acceptable</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Jan</span> <span class="mi">2022</span> <span class="mi">23</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
-<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.52</span> <span class="p">(</span><span class="n">Unix</span><span class="p">)</span> <span class="n">OpenSSL</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">m</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span> <span class="n">mod_perl</span><span class="o">/</span><span class="mf">2.0.11</span> <span class="n">Perl</span><span class="o">/</span><span class="n">v5</span><span class="mf">.32.1</span>
-<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">PHP</span><span class="o">/</span><span class="mf">8.0.14</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="v2.html" class="btn btn-neutral float-right" title="V2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
