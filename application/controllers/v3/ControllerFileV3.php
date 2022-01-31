@@ -128,7 +128,7 @@ class ControllerFileV3 extends ControllerElementV3 {
 
 		//success
 		ftp_close($ftp);
-		RespJSON::response("204",array("message"=>"File successfully delete","file"=>array("path"=>$path)));
+		RespJSON::response("200",array("message"=>"File successfully delete","file"=>array("path"=>$path)));
 		die();
 	}
 

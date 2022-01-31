@@ -79,7 +79,7 @@ class ControllerDirectoryV3 extends ControllerElementV3
 		ftp_close($ftp);
 		$dirsName = explode("/",PathCorrecter2::removeFinalSlashIfNotPresent($path));
 		//useless, no body in delete ? :sadge:
-		RespJSON::response("204",array("message"=>"Directory successfully deleted","directory"=>array("path"=>$path,"directoryName"=>end($dirsName))));
+		RespJSON::response("200",array("message"=>"Directory successfully deleted","directory"=>array("path"=>$path,"directoryName"=>end($dirsName))));
 		die();
 	}
 
