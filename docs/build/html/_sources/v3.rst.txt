@@ -65,7 +65,7 @@ Files
 		:param: 'path' : The path to the file
 		:returns: HTTP Response :
 
-					- 204 OK.
+					- 200 OK.
 
 					- 400 Bad Request.
 
@@ -75,10 +75,22 @@ Files
 
 		::
 
-				< HTTP/1.1 204 OK
-				< Date: Mon, 24 Jan 2022 23:38:41 GMT
+				< HTTP/1.1 200 OK
+				< Date: Mon, 31 Jan 2022 16:14:42 GMT
 				< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
 				< X-Powered-By: PHP/8.0.14
+				< Content-Length: 108
+				< Content-Type: application/json
+				<
+				{
+					"code":"200",
+					"message":"File successfully delete",
+					"status":"SUCCESS",
+					"file":
+					{
+						"path":"./wwwhome/File2.txt"
+					}
+				}
 
 		..
 
@@ -261,7 +273,7 @@ Dirs
 		:param: 'path' : Path of the directory to delete
 		:returns: HTTP Response :
 
-					- 204 OK.
+					- 200 OK.
 
 					- 400 Bad Request.
 
@@ -271,11 +283,23 @@ Dirs
 
 		::
 
-			< HTTP/1.1 204 OK
-			< Date: Sat, 29 Jan 2022 22:24:41 GMT
+			< HTTP/1.1 200 OK
+			< Date: Mon, 31 Jan 2022 16:18:47 GMT
 			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
 			< X-Powered-By: PHP/8.0.14
+			< Content-Length: 149
+			< Content-Type: application/json
 			<
+			{
+				"code":"200",
+				"message":"Directory successfully deleted",
+				"status":"SUCCESS",
+				"directory":
+				{
+					"path":"./wwwhome/Directory1",
+					"directoryName":"Directory1"
+				}
+			}
 
 		..
 
@@ -491,11 +515,23 @@ Dirs
 		::
 
 			< HTTP/1.1 200 OK
-			< Date: Mon, 24 Jan 2022 23:53:57 GMT
+			< Date: Mon, 31 Jan 2022 16:24:36 GMT
 			< Server: Apache/2.4.52 (Unix) OpenSSL/1.1.1m PHP/8.0.14 mod_perl/2.0.11 Perl/v5.32.1
 			< X-Powered-By: PHP/8.0.14
-			< Content-Length: 0
-			< Content-Type: text/html; charset=UTF-8
+			< Content-Length: 166
+			< Content-Type: application/json
+			<
+			{
+				"code":"200",
+				"message":"File successfully renamed",
+				"status":"SUCCESS",
+				"file":
+				{
+					"path":"./wwwhome/Directory",
+					"previousName":"DirectoryToRename",
+					"newName":"Directory"
+				}
+			}
 
 		..
 

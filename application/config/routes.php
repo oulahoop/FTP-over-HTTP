@@ -121,6 +121,6 @@ $route['v3/dirs/pwd'] = 'v3/ControllerDirectoryV3/pwd';
 
 //Routes for DOCS
 
-$route['doc'] = 'Main';
+$route['documentation'] = 'Main/index';
 
 
