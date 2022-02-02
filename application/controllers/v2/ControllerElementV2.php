@@ -29,6 +29,7 @@ abstract class ControllerElementV2 extends CI_Controller{
 		$previousName = $_POST["previousName"];
 		$newName = $_POST["newName"];
 
+
 		$ftp = FTPConnexion::getFTP();
 		if(!$ftp){
 			ResponseJSON::responseErrorConnectFTP();
@@ -38,6 +39,10 @@ abstract class ControllerElementV2 extends CI_Controller{
 		$rename = ftp_rename($ftp,$path.$previousName, $path.$newName);
 		if(!$rename){
 			ftp_close($ftp);
+			if($previousName == $newName){
+				ResponseJSON::response("200 OK",null);
+				die();
+			}
 			ResponseJSON::response("404 Not Found", array("error"=>$path.$previousName. " doesn't exists."));
 			die();
 		}

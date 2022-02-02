@@ -29,7 +29,7 @@ class ControllerElement extends CI_Controller{
 			ResponseJSON::response("400 Bad Request", array("error"=>"A arguments is missing, you need to precise : the path, the file to rename and the new name"));
 			die();
 		}
-		$path = PathCorrecter::addFinalSlashIfNotPresent($_POST["path"]);
+		$path = PathCorrecter2::addFinalSlashIfNotPresent($_POST["path"]);
 		$fileToRename = $_POST["fileToRename"];
 		$newName = $_POST["newName"];
 

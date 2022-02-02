@@ -60,7 +60,9 @@ class ControllerFileV3 extends ControllerElementV3 {
 			header("Content-Type: application/json");
 			header("Content-Transfer-Encoding: Binary");
 			header("Content-Disposition: attachment; filename=".$filename);
-			echo json_encode(array("code"=>"200","message"=>"File successfully get","status"=>"SUCCESS","file"=>array("name"=>$filename,"content"=>file_get_contents($attachment_location))));
+			readfile($attachment_location);
+			unlink($attachment_location);
+			//echo json_encode(array("code"=>"200","message"=>"File successfully get","status"=>"SUCCESS","file"=>array("name"=>$filename,"content"=>readfile($attachment_location))));
 		} else {
 			RespJSON::response("500",null);
 		}

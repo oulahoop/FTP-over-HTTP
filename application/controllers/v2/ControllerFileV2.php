@@ -75,7 +75,7 @@ class ControllerFileV2 extends ControllerElementV2 {
 	private function put(){
 
 		parse_str(file_get_contents("php://input"),$_PUT);
-		$_PUT["path"] = "./";
+
 		if(!isset($_PUT["path"],$_FILES["file"])){
 			ResponseJSON::response("400 Bad Request",array("error"=>"The path or the file has not been precised."));
 			die();

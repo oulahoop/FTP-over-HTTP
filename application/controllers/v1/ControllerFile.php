@@ -31,7 +31,7 @@ class ControllerFile extends ControllerElement {
 		}
 
 
-		$path = PathCorrecter::addFinalSlashIfNotPresent($_GET["path"]);
+		$path = PathCorrecter2::addFinalSlashIfNotPresent($_GET["path"]);
 		$splitSlash = explode("/", $_GET["path"]);
 		$splitPoint = explode(".", $path);
 		$filename = end($splitSlash);
@@ -87,7 +87,7 @@ class ControllerFile extends ControllerElement {
 			die();
 		}
 
-		$path = PathCorrecter::addFinalSlashIfNotPresent($_PUT['path']);
+		$path = PathCorrecter2::addFinalSlashIfNotPresent($_PUT['path']);
 
 		if(!ftp_put($ftp,$path.$_FILES['fileToUpload']['name'],$_FILES['fileToUpload']['tmp_name'],FTP_BINARY)) {
 			ftp_close($ftp);
@@ -152,8 +152,8 @@ class ControllerFile extends ControllerElement {
 			die();
 		}
 
-		$pathSrc = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathSrc"]).$_POST["filename"];
-		$pathDst = PathCorrecter::addFinalSlashIfNotPresent($_POST["pathDst"]).$_POST["filename"];
+		$pathSrc = PathCorrecter2::addFinalSlashIfNotPresent($_POST["pathSrc"]).$_POST["filename"];
+		$pathDst = PathCorrecter2::addFinalSlashIfNotPresent($_POST["pathDst"]).$_POST["filename"];
 
 		if(!ftp_rename($ftp, $pathSrc, $pathDst)){
 			ftp_close($ftp);

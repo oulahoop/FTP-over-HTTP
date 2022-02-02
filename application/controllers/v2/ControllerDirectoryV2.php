@@ -36,7 +36,7 @@ class ControllerDirectoryV2 extends ControllerElementV2
 
 		if(!ftp_mkdir($ftp, $_POST["path"])){
 			ftp_close($ftp);
-			ResponseJSON::response("400 Bad Request", array("error" => "Cannot create this directory, ". $_POST["path"] . " is not found"));
+			ResponseJSON::response("400 Bad Request", array("error" => "Cannot create this directory here (". $_POST["path"].")"));
 			die();
 		}
 
